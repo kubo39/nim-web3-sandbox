@@ -1,0 +1,19 @@
+name: CI
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout nim-web3-sandbox repo
+        uses: actions/checkout@v4
+      - name: Install dependencies
+        run: sudo apt-get install -y libsecp256k1-dev
+      - uses: jiro4989/setup-nim-action@v2
+      - name: Install foundry
+        uses: foundry-rs/foundry-toolchain@v1
+      - name: Run test
+        run: |
+          ./ci-test.sh
+
