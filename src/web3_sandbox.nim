@@ -2,6 +2,7 @@ import
   std/json,
   chronos,
   json_rpc/client,
+  macros,
   results,
   stew/byteutils,
   web3
@@ -22,7 +23,7 @@ echo waitFor ethGetBalance()
 contract(Multiply7):
   proc multiply(input: UInt256): UInt256 {.view.}
 
-const Multiply7Code = staticRead("../contractsBuild/Multiply7.bin")
+const Multiply7Code = staticRead(getProjectPath() & "/../contractsBuild/Multiply7.bin")
 
 proc doContract() {.async.} =
   let web3 = await newWeb3("ws://127.0.0.1:8545")
