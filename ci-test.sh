@@ -1,5 +1,5 @@
 #!/bin/sh
 
 set -ex
-nohup anvil --balance 1000000 --timestamp 0 &
+nohup anvil --block-base-fee-per-gas=0 --gas-price=0 --balance=1000000 &
 nimble run -y 
